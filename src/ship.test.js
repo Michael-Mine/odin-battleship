@@ -1,10 +1,16 @@
 import { expect, jest, test } from "@jest/globals";
-import { sum } from "./ship";
+import { Ship } from "./ship";
 
-test("adds 1 + 2 to equal 3", () => {
-  expect(sum(1, 2)).toBe(3);
-});
+test("ship properties exist", () => {
+  const testShip = Ship({
+    name: "Voyager",
+    length: 5,
+    timesHit: 0,
+    isSunk: false,
+  });
 
-test("ship length over 0", () => {
-  expect();
+  expect(testShip).toHaveProperty("name");
+  expect(testShip).toHaveProperty("length");
+  expect(testShip).toHaveProperty("timesHit");
+  expect(testShip).toHaveProperty("isSunk");
 });

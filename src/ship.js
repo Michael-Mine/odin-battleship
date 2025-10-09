@@ -1,3 +1,3 @@
-export function sum(a, b) {
-  return a + b;
+export function Ship( { name, length, timesHit, isSunk } ) {
+  return { name, length, timesHit, isSunk };
 }
