@@ -12,5 +12,8 @@
   "scripts": {
     "test": "jest",
     "watch": "jest --watch *.js"
+  },
+  "dependencies": {
+    "@types/jest": "^30.0.0"
   }
 }
