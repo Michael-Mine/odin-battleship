@@ -12,3 +12,19 @@ export function Ship(length) {
     },
   };
 }
+
+export function ship(length) {
+  let timesHit = 0;
+
+  return {
+    getTimesHit: function () {
+      return timesHit;
+    },
+    hit: function () {
+      timesHit += 1;
+    },
+    isSunk: function () {
+      return timesHit === length ? true : false;
+    },
+  };
+}
