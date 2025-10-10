@@ -1,16 +1,24 @@
 import { expect, jest, test } from "@jest/globals";
 import { Ship } from "./ship";
 
-test("ship properties exist", () => {
-  const testShip = Ship({
-    name: "Voyager",
-    length: 5,
-    timesHit: 0,
-    isSunk: false,
-  });
+const testShip = Ship("Voyager", 3);
 
+test("ship properties exist", () => {
   expect(testShip).toHaveProperty("name");
   expect(testShip).toHaveProperty("length");
   expect(testShip).toHaveProperty("timesHit");
-  expect(testShip).toHaveProperty("isSunk");
+  expect(testShip).toHaveProperty("sunk");
+});
+
+test("ship hit function", () => {
+  testShip.hit();
+  expect(testShip.timesHit).toBe(1);
+});
+
+test("ship isSunk function", () => {
+  testShip.hit();
+  testShip.hit();
+  testShip.hit();
+  
+  expect(testShip.isSunk).toBeTruthy();
 });
