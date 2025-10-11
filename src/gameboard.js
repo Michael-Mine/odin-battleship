@@ -1,11 +1,6 @@
 export function gameBoard() {
   const board = createBoard();
 
-  function checkAllShipsSunk() {
-    //run through board for 20 x 2
-    // or check ship.isSunk
-  }
-
   return {
     getBoard: function () {
       return board;
@@ -23,7 +18,7 @@ export function gameBoard() {
     receiveAttack: function (row, column) {
       if (board[row][column].getValue() === 1) {
         board[row][column].hitShip();
-        checkAllShipsSunk();
+        checkAllShipsSunk(board);
       } else if (board[row][column].getValue() === 0) {
         board[row][column].missShip();
       } else {
@@ -64,4 +59,21 @@ function cell() {
       value = 3;
     },
   };
+}
+
+function checkAllShipsSunk(board) {
+  let hitCounter = 0;
+
+  board.forEach((row) => {
+    row.forEach((element) => {
+      if (element.getValue() === 2) {
+        hitCounter += 1;
+      }
+    });
+  });
+  if (hitCounter === 1) {
+    console.log("Game over");
+    return true;
+  }
+  // or check ship.isSunk
 }
