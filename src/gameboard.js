@@ -1,6 +1,11 @@
 export function gameBoard() {
   const board = createBoard();
 
+  function checkAllShipsSunk() {
+    //run through board for 20 x 2
+    // or check ship.isSunk
+  }
+
   return {
     getBoard: function () {
       return board;
@@ -10,6 +15,20 @@ export function gameBoard() {
         row.map((cell) => cell.getValue())
       );
       console.table(boardWithCellValues);
+    },
+    placeShip: function (row, column) {
+      board[row][column].addShip();
+      // call ship factory?
+    },
+    receiveAttack: function (row, column) {
+      if (board[row][column].getValue() === 1) {
+        board[row][column].hitShip();
+        checkAllShipsSunk();
+      } else if (board[row][column].getValue() === 0) {
+        board[row][column].missShip();
+      } else {
+        throw new Error("These coordinates have already received an attack!");
+      }
     },
   };
 }
@@ -32,16 +51,17 @@ function cell() {
   let value = 0;
 
   return {
-    addToken: function (player) {
-      value = player;
-    },
     getValue: function () {
       return value;
     },
+    addShip: function () {
+      value = 1;
+    },
+    hitShip: function () {
+      value = 2;
+    },
+    missShip: function () {
+      value = 3;
+    },
   };
 }
-
-// 0 = no ships
-// 1 = ship no hit
-// 2 = ship hit (or miss?)
-// 3 = miss
