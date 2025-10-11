@@ -1,0 +1,6 @@
+@startuml gameBoard
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+gameController -> gameBoard : getBoard
+gameController <-- gameBoard : getBoard
+@enduml
