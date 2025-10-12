@@ -1,5 +1,5 @@
 import { expect, jest, test } from "@jest/globals";
-import { gameBoard } from "./gameboard";
+import { gameBoard } from "./game-board";
 import { ship } from "./ship";
 
 const playerGameBoard = gameBoard();
@@ -39,5 +39,3 @@ test("receiveAttack error", () => {
     playerGameBoard.receiveAttack(0, 3);
   }).toThrow("These coordinates have already received an attack!");
 });
-
-
