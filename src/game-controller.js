@@ -1,12 +1,14 @@
+import { displayBothBoards } from "./dom-view";
 import { player } from "./game-logic-tested/player";
 
 export function gameController() {
-  // create players
   const players = createPlayers();
-  console.log(players);
-  // populate player's gameboard with predetermined coordinates
+
+  prePopulateBothShips(players);
 
   // display both player's boards in html and render using info from gameBoard in dom-view
+  displayBothBoards(players);
+
   // event listeners to step through game turn by turn using other objects methods
   // user click for attacks, re-render boards, track current players turn here
   // make computer attacks random
@@ -23,5 +25,19 @@ export function gameController() {
 function createPlayers() {
   const player1 = player();
   const player2 = player();
+  return [player1, player2];
+}
+
+function prePopulateBothShips(players) {
+  const [player1, player2] = players;
+
+  player1.placeShip(0, 1);
+  player1.placeShip(5, 5);
+  player1.placeShip(9, 8);
+
+  player2.placeShip(1, 8);
+  player2.placeShip(4, 4);
+  player2.placeShip(8, 7);
+
   return [player1, player2];
 }
