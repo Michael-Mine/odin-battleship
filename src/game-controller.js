@@ -17,8 +17,8 @@ export function gameController() {
   // implement system to allow players to place their ships via coord or button to random
 
   // extra credit:
-  // implement drag and drop to place ships
-  // create 2-player option
+  // implement drag and drop to place ships ?
+  // create 2-player option ?
   // polish intelligence of computer by having it try adjacent slots after hit
 }
 

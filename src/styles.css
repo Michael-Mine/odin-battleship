@@ -115,7 +115,48 @@ header {
     brightness(84%) contrast(84%);
 }
 
+@media (max-width: 435px) {
+  .header-title .header-logo {
+    display: none;
+  }
+}
+
 .header-title {
   display: flex;
   gap: 10px;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  height: 420px;
+  width: 420px;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  border: 1px solid black;
+  gap: 2px;
+  padding: 2px;
+  /* background-color: darkolivegreen; */
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+  color: darkolivegreen;
+  border: 1px solid grey;
+  /* background: lightellow; */
+}
+
+.cell-button {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
 }

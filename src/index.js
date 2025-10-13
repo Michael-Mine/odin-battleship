@@ -1,4 +1,12 @@
 import "./styles.css";
 import { gameController } from "./game-controller.js";
 
-gameController()
+const playGame = document.querySelector("#play-game");
+
+playGame.addEventListener("click", (event) => {
+  event.preventDefault();
+  gameController()
+});
+
+
+
