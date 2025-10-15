@@ -156,7 +156,15 @@ section {
 }
 
 .cell-button {
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
+    /* max-width: 100%; */
     cursor: pointer;
+    background-color: var(--primary-colour-aside);
+    border: none;
+    border-radius: 8px;
+}
+
+.cell-button:hover {
+  background-color: var(--primary-colour-header);
 }

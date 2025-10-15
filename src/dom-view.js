@@ -53,12 +53,12 @@ function displayBoardComputer(player) {
       cellDiv.dataset.column = columnIndex;
 
       if (cell.getValue() === 0) {
-        cellDiv.classList.add("cell-button");
         cellDiv.appendChild(cellButton);
+        cellButton.classList.add("cell-button");
         cellButton.textContent = "";
       } else if (cell.getValue() === 1) {
-        cellDiv.classList.add("cell-button");
         cellDiv.appendChild(cellButton);
+        cellButton.classList.add("cell-button");
       } else if (cell.getValue() === 2) {
         icon.src = sailBoatSink;
         cellDiv.appendChild(icon);
