@@ -1,20 +1,20 @@
 import { displayBothBoards } from "./dom-view";
 import { player } from "./game-logic-tested/player";
 
-export const gameController = (function() {
+export const gameController = (function () {
   const players = createPlayers();
 
   prePopulateBothShips(players);
 
   displayBothBoards(players);
 
-  function sendAttack(row, column) {
-    players[1].receiveAttack(row, column);
-    displayBothBoards(players);
-  }
-
   // user click for attacks, re-render boards, track current players turn here
-  return { sendAttack };
+  return {
+    sendAttack: function (row, column) {
+      players[1].receiveAttack(row, column);
+      displayBothBoards(players);
+    },
+  };
 
   // make computer attacks random
   // create conditions to end game after all ships sunk here
@@ -25,7 +25,7 @@ export const gameController = (function() {
   // implement drag and drop to place ships ?
   // create 2-player option ?
   // polish intelligence of computer by having it try adjacent slots after hit
-})()
+})();
 
 function createPlayers() {
   const user = player();

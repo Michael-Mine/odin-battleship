@@ -33,3 +33,9 @@ test("receiveAttack miss", () => {
   const testBoard = playerGameBoard.getBoard();
   expect(testBoard[0][3].getValue()).toBe(3);
 });
+
+test("receiveAttack error", () => {
+  expect(() => {
+    playerGameBoard.receiveAttack(0, 3);
+  }).toThrow("These coordinates have already received an attack!");
+});

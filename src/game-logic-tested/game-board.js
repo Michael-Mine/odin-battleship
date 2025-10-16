@@ -21,6 +21,8 @@ export function gameBoard() {
         checkAllShipsSunk(board);
       } else if (board[row][column].getValue() === 0) {
         board[row][column].missShip();
+      } else {
+        throw new Error("These coordinates have already received an attack!");
       }
     },
   };

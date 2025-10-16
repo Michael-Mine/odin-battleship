@@ -5,15 +5,15 @@ import { gameController } from "./game-controller";
 
 export function displayBothBoards(players) {
   const [user, computer] = players;
-  user.printBoard();
-  computer.printBoard();
+  // user.printBoard();
+  // computer.printBoard();
   displayBoardUser(user);
   displayBoardComputer(computer);
 }
 
 function displayBoardUser(user) {
   const board = user.getBoard();
-  const boardDiv = document.querySelector("#player1-board");
+  const boardDiv1 = document.querySelector("#player1-board");
 
   board.forEach((row, rowIndex) => {
     row.forEach((cell, columnIndex) => {
@@ -34,14 +34,14 @@ function displayBoardUser(user) {
         cellDiv.textContent = "X";
       }
 
-      boardDiv.appendChild(cellDiv);
+      boardDiv1.appendChild(cellDiv);
     });
   });
 }
 
 function displayBoardComputer(computer) {
   const board = computer.getBoard();
-  const boardDiv = document.querySelector("#player2-board");
+  const boardDiv2 = document.querySelector("#player2-board");
 
   board.forEach((row, rowIndex) => {
     row.forEach((cell, columnIndex) => {
@@ -67,24 +67,23 @@ function displayBoardComputer(computer) {
         cellDiv.textContent = "X";
       }
 
-      boardDiv.appendChild(cellDiv);
+      boardDiv2.appendChild(cellDiv);
     });
   });
-
-  boardDiv.addEventListener("click", clickHandlerBoard);
-
-  function clickHandlerBoard(event) {
-    const row = event.target.dataset.row;
-    const column = event.target.dataset.column;
-    console.log(row, column);
-    clearBoards()
-    gameController.sendAttack(row, column);
-  }
+  boardDiv2.addEventListener("click", clickHandlerBoard);
 }
 
-function clearBoards () {
+function clickHandlerBoard(event) {
+  const row = event.target.dataset.row;
+  const column = event.target.dataset.column;
+  console.log(row, column);
+  clearBoards();
+  gameController.sendAttack(row, column);
+}
+
+function clearBoards() {
   const boardDiv1 = document.querySelector("#player1-board");
   const boardDiv2 = document.querySelector("#player2-board");
-  boardDiv1.textContent = ""
-  boardDiv2.textContent = ""
+  boardDiv1.textContent = "";
+  boardDiv2.textContent = "";
 }
