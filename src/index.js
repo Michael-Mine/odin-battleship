@@ -5,8 +5,6 @@ const playGame = document.querySelector("#play-game");
 
 playGame.addEventListener("click", (event) => {
   event.preventDefault();
-  gameController()
+  gameController();
+  playGame.textContent = "New Game";
 });
-
-
-

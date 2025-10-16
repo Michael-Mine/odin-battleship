@@ -1,17 +1,18 @@
 // only sends messages to controller
 import sailBoat from "./images/sail-boat.svg";
 import sailBoatSink from "./images/sail-boat-sink.svg";
+import { gameController } from "./game-controller";
 
 export function displayBothBoards(players) {
-  const [player1, player2] = players;
-  player1.printBoard();
-  player2.printBoard();
-  displayBoardPlayer(player1);
-  displayBoardComputer(player2);
+  const [user, computer] = players;
+  user.printBoard();
+  computer.printBoard();
+  displayBoardUser(user);
+  displayBoardComputer(computer);
 }
 
-function displayBoardPlayer(player) {
-  const board = player.getBoard();
+function displayBoardUser(user) {
+  const board = user.getBoard();
   const boardDiv = document.querySelector("#player1-board");
 
   board.forEach((row, rowIndex) => {
@@ -20,8 +21,8 @@ function displayBoardPlayer(player) {
       const icon = document.createElement("img");
 
       cellDiv.classList.add("cell");
-      cellDiv.dataset.row = rowIndex;
-      cellDiv.dataset.column = columnIndex;
+      // cellDiv.dataset.row = rowIndex;
+      // cellDiv.dataset.column = columnIndex;
 
       if (cell.getValue() === 1) {
         icon.src = sailBoat;
@@ -38,8 +39,8 @@ function displayBoardPlayer(player) {
   });
 }
 
-function displayBoardComputer(player) {
-  const board = player.getBoard();
+function displayBoardComputer(computer) {
+  const board = computer.getBoard();
   const boardDiv = document.querySelector("#player2-board");
 
   board.forEach((row, rowIndex) => {
@@ -49,8 +50,8 @@ function displayBoardComputer(player) {
       const icon = document.createElement("img");
 
       cellDiv.classList.add("cell");
-      cellDiv.dataset.row = rowIndex;
-      cellDiv.dataset.column = columnIndex;
+      cellButton.dataset.row = rowIndex;
+      cellButton.dataset.column = columnIndex;
 
       if (cell.getValue() === 0) {
         cellDiv.appendChild(cellButton);
@@ -69,4 +70,21 @@ function displayBoardComputer(player) {
       boardDiv.appendChild(cellDiv);
     });
   });
+
+  boardDiv.addEventListener("click", clickHandlerBoard);
+
+  function clickHandlerBoard(event) {
+    const row = event.target.dataset.row;
+    const column = event.target.dataset.column;
+    console.log(row, column);
+    clearBoards()
+    gameController.sendAttack(row, column);
+  }
+}
+
+function clearBoards () {
+  const boardDiv1 = document.querySelector("#player1-board");
+  const boardDiv2 = document.querySelector("#player2-board");
+  boardDiv1.textContent = ""
+  boardDiv2.textContent = ""
 }
