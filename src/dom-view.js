@@ -3,7 +3,11 @@ import sailBoat from "./images/sail-boat.svg";
 import sailBoatSink from "./images/sail-boat-sink.svg";
 import { gameController } from "./game-controller";
 
+const boardDiv1 = document.querySelector("#player1-board");
+const boardDiv2 = document.querySelector("#player2-board");
+
 export function displayBothBoards(players) {
+  clearBoards();
   const [user, computer] = players;
   // user.printBoard();
   // computer.printBoard();
@@ -11,18 +15,20 @@ export function displayBothBoards(players) {
   displayBoardComputer(computer);
 }
 
+function clearBoards() {
+  boardDiv1.textContent = "";
+  boardDiv2.textContent = "";
+}
+
 function displayBoardUser(user) {
   const board = user.getBoard();
-  const boardDiv1 = document.querySelector("#player1-board");
 
-  board.forEach((row, rowIndex) => {
-    row.forEach((cell, columnIndex) => {
+  board.forEach((row) => {
+    row.forEach((cell) => {
       const cellDiv = document.createElement("div");
       const icon = document.createElement("img");
 
       cellDiv.classList.add("cell");
-      // cellDiv.dataset.row = rowIndex;
-      // cellDiv.dataset.column = columnIndex;
 
       if (cell.getValue() === 1) {
         icon.src = sailBoat;
@@ -41,7 +47,6 @@ function displayBoardUser(user) {
 
 function displayBoardComputer(computer) {
   const board = computer.getBoard();
-  const boardDiv2 = document.querySelector("#player2-board");
 
   board.forEach((row, rowIndex) => {
     row.forEach((cell, columnIndex) => {
@@ -57,9 +62,11 @@ function displayBoardComputer(computer) {
         cellDiv.appendChild(cellButton);
         cellButton.classList.add("cell-button");
         cellButton.textContent = "";
+        cellButton.addEventListener("click", clickHandlerBoard);
       } else if (cell.getValue() === 1) {
         cellDiv.appendChild(cellButton);
         cellButton.classList.add("cell-button");
+        cellButton.addEventListener("click", clickHandlerBoard);
       } else if (cell.getValue() === 2) {
         icon.src = sailBoatSink;
         cellDiv.appendChild(icon);
@@ -70,20 +77,12 @@ function displayBoardComputer(computer) {
       boardDiv2.appendChild(cellDiv);
     });
   });
-  boardDiv2.addEventListener("click", clickHandlerBoard);
+  // boardDiv2.addEventListener("click", clickHandlerBoard);
 }
 
 function clickHandlerBoard(event) {
   const row = event.target.dataset.row;
   const column = event.target.dataset.column;
   console.log(row, column);
-  clearBoards();
   gameController.sendAttack(row, column);
-}
-
-function clearBoards() {
-  const boardDiv1 = document.querySelector("#player1-board");
-  const boardDiv2 = document.querySelector("#player2-board");
-  boardDiv1.textContent = "";
-  boardDiv2.textContent = "";
 }

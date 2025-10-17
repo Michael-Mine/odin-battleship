@@ -8,15 +8,16 @@ export const gameController = (function () {
 
   displayBothBoards(players);
 
-  // user click for attacks, re-render boards, track current players turn here
   return {
     sendAttack: function (row, column) {
       players[1].receiveAttack(row, column);
       displayBothBoards(players);
+      const [row2, column2] = getComputerAttack(players[0]);
+      players[0].receiveAttack(row2, column2);
+      displayBothBoards(players);
     },
   };
 
-  // make computer attacks random
   // create conditions to end game after all ships sunk here
 
   // implement system to allow players to place their ships via coord or button to random
@@ -45,4 +46,22 @@ function prePopulateBothShips(players) {
   computer.placeShip(8, 7);
 
   return [user, computer];
+}
+
+function getComputerAttack(computer) {
+  const board = computer.getBoard();
+  let row;
+  let column;
+  let boardValue;
+  do {
+    row = getRandomInt(10);
+    column = getRandomInt(10);
+    boardValue = board[row][column].getValue();
+  } while (boardValue > 1);
+
+  return [row, column];
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }
