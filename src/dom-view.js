@@ -3,8 +3,8 @@ import sailBoat from "./images/sail-boat.svg";
 import sailBoatSink from "./images/sail-boat-sink.svg";
 import { gameController } from "./game-controller";
 
-const boardDiv1 = document.querySelector("#player1-board");
-const boardDiv2 = document.querySelector("#player2-board");
+const boardDiv1 = document.querySelector("#user-board");
+const boardDiv2 = document.querySelector("#computer-board");
 
 export function displayBothBoards(players) {
   clearBoards();

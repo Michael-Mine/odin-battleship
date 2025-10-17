@@ -132,6 +132,14 @@ section {
   align-items: center;
 }
 
+#random,
+#start-game,
+#new-game,
+#user-board,
+#computer-board {
+  display: none;
+}
+
 .board {
   display: grid;
   height: 420px;
@@ -156,13 +164,13 @@ section {
 }
 
 .cell-button {
-    height: 90%;
-    width: 90%;
-    /* max-width: 100%; */
-    cursor: pointer;
-    background-color: var(--primary-colour-aside);
-    border: none;
-    border-radius: 8px;
+  height: 90%;
+  width: 90%;
+  /* max-width: 100%; */
+  cursor: pointer;
+  background-color: var(--primary-colour-aside);
+  border: none;
+  border-radius: 8px;
 }
 
 .cell-button:hover {
