@@ -5,13 +5,13 @@ const playGameButton = document.querySelector("#play-game");
 const randomButton = document.querySelector("#random");
 const startGameButton = document.querySelector("#start-game");
 const newGameButton = document.querySelector("#new-game");
-const userBoard  = document.querySelector("#user-board");
-const infoDiv  = document.querySelector("#info");
-const computerBoard  = document.querySelector("#computer-board");
+const userBoard = document.querySelector("#user-board");
+export const infoDiv = document.querySelector("#info");
+const computerBoard = document.querySelector("#computer-board");
 
 playGameButton.addEventListener("click", (event) => {
   event.preventDefault();
-  gameSetup()
+  gameSetup();
 });
 
 function gameSetup() {
@@ -31,7 +31,7 @@ startGameButton.addEventListener("click", (event) => {
   randomButton.style.display = "none";
   startGameButton.style.display = "none";
   newGameButton.style.display = "inline-block";
-  infoDiv.textContent = "Click in grid below to attack!"
+  infoDiv.textContent = "Click in grid below to attack!";
   computerBoard.style.display = "grid";
 });
 
@@ -41,6 +41,4 @@ newGameButton.addEventListener("click", (event) => {
   infoDiv.textContent = "";
   computerBoard.style.display = "none";
   randomButton.style.display = "inline-block";
-  //clear user board
 });
-

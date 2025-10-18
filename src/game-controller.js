@@ -1,3 +1,4 @@
+import { infoDiv } from ".";
 import { displayBothBoards } from "./dom-view";
 import { player } from "./game-logic-tested/player";
 import { getRandomInt, getRandomShips } from "./random-ships";
@@ -10,13 +11,6 @@ export const gameController = (function () {
   displayBothBoards(players);
 
   return {
-    sendAttack: function (row, column) {
-      players[1].receiveAttack(row, column);
-      displayBothBoards(players);
-      const [row2, column2] = getComputerAttack(players[0]);
-      players[0].receiveAttack(row2, column2);
-      displayBothBoards(players);
-    },
     placeShipsRandom: function () {
       user.resetBoard();
       const userShips = getRandomShips();
@@ -25,6 +19,7 @@ export const gameController = (function () {
         let shipColumn = Number(element.charAt(2));
         user.placeShip(shipRow, shipColumn);
       });
+
       computer.resetBoard();
       const computerShips = getRandomShips();
       computerShips.forEach((element) => {
@@ -33,7 +28,18 @@ export const gameController = (function () {
         computer.placeShip(shipRow, shipColumn);
       });
       computer.printBoard();
+
       displayBothBoards(players);
+    },
+    sendAttack: function (row, column) {
+      players[1].receiveAttack(row, column, 0);
+      displayBothBoards(players);
+
+      setTimeout(() => {
+        const [row2, column2] = getComputerAttack(players[0]);
+        players[0].receiveAttack(row2, column2, 1);
+        displayBothBoards(players);
+      }, 1000);
     },
   };
 
@@ -54,4 +60,20 @@ function getComputerAttack(computer) {
   } while (boardValue > 1);
 
   return [row, column];
+}
+
+export function hitMessage(player) {
+  if (player === 0) {
+    infoDiv.textContent = "You hit a BattleShip! Enemy's turn...";
+  } else {
+    infoDiv.textContent = "The enemy hit your BattleShip! Your turn...";
+  }
+}
+
+export function missMessage(player) {
+  if (player === 0) {
+    infoDiv.textContent = "You missed! Enemy's turn...";
+  } else {
+    infoDiv.textContent = "The enemy missed! Your turn...";
+  }
 }

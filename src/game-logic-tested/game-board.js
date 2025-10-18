@@ -1,3 +1,5 @@
+import { hitMessage, missMessage } from "../game-controller.js";
+
 export function gameBoard() {
   const board = createBoard();
 
@@ -15,12 +17,14 @@ export function gameBoard() {
       board[row][column].addShip();
       // call ship factory?
     },
-    receiveAttack: function (row, column) {
+    receiveAttack: function (row, column, player) {
       if (board[row][column].getValue() === 1) {
         board[row][column].hitShip();
+        hitMessage(player);
         checkAllShipsSunk(board);
       } else if (board[row][column].getValue() === 0) {
         board[row][column].missShip();
+        missMessage(player);
       } else {
         throw new Error("These coordinates have already received an attack!");
       }
@@ -79,7 +83,7 @@ function checkAllShipsSunk(board) {
       }
     });
   });
-  if (hitCounter === 1) {
+  if (hitCounter === 20) {
     console.log("Game over");
     return true;
   }
