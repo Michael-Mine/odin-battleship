@@ -22,7 +22,7 @@ function gameSetup() {
 
 randomButton.addEventListener("click", (event) => {
   event.preventDefault();
-  // placeShipsrandom();
+  gameController.placeUserShipsRandom();
   startGameButton.style.display = "inline-block";
 });
 
