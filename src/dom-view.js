@@ -32,9 +32,11 @@ function displayBoardUser(user) {
 
       if (cell.getValue() === 1) {
         icon.src = sailBoat;
+        icon.classList.add("ship-sail");
         cellDiv.appendChild(icon);
       } else if (cell.getValue() === 2) {
         icon.src = sailBoatSink;
+        icon.classList.add("ship-sink");
         cellDiv.appendChild(icon);
       } else if (cell.getValue() === 3) {
         cellDiv.textContent = "X";
@@ -69,6 +71,7 @@ function displayBoardComputer(computer) {
         cellButton.addEventListener("click", clickHandlerBoard);
       } else if (cell.getValue() === 2) {
         icon.src = sailBoatSink;
+        icon.classList.add("ship-sink");
         cellDiv.appendChild(icon);
       } else {
         cellDiv.textContent = "X";

@@ -176,3 +176,13 @@ section {
 .cell-button:hover {
   background-color: var(--primary-colour-header);
 }
+
+.ship-sail {
+  filter: invert(78%) sepia(35%) saturate(624%) hue-rotate(137deg)
+    brightness(84%) contrast(84%);
+}
+
+.ship-sink {
+  filter: invert(25%) sepia(50%) saturate(1720%) hue-rotate(255deg)
+    brightness(92%) contrast(97%);
+}

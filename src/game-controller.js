@@ -49,8 +49,6 @@ export const gameController = (function () {
     },
   };
 
-  // create conditions to end game after all ships sunk here
-
   // polish intelligence of computer by having it try adjacent slots after hit
 })();
 
