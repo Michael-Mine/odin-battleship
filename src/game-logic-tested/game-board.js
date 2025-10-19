@@ -1,4 +1,5 @@
-import { hitMessage, missMessage } from "../game-controller.js";
+// jest parse error from below import
+import { hitMessage, missMessage, winMessage } from "../game-controller.js";
 
 export function gameBoard() {
   const board = createBoard();
@@ -7,6 +8,7 @@ export function gameBoard() {
     getBoard: function () {
       return board;
     },
+    // only for testing during development
     printBoard: function () {
       const boardWithCellValues = board.map((row) =>
         row.map((cell) => cell.getValue())
@@ -15,13 +17,12 @@ export function gameBoard() {
     },
     placeShip: function (row, column) {
       board[row][column].addShip();
-      // call ship factory?
     },
     receiveAttack: function (row, column, player) {
       if (board[row][column].getValue() === 1) {
         board[row][column].hitShip();
         hitMessage(player);
-        checkAllShipsSunk(board);
+        checkAllShipsSunk(board, player);
       } else if (board[row][column].getValue() === 0) {
         board[row][column].missShip();
         missMessage(player);
@@ -73,7 +74,7 @@ function cell() {
   };
 }
 
-function checkAllShipsSunk(board) {
+function checkAllShipsSunk(board, player) {
   let hitCounter = 0;
 
   board.forEach((row) => {
@@ -84,8 +85,6 @@ function checkAllShipsSunk(board) {
     });
   });
   if (hitCounter === 20) {
-    console.log("Game over");
-    return true;
+    winMessage(player);
   }
-  // or check ship.isSunk
 }

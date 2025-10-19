@@ -73,11 +73,9 @@ function displayBoardComputer(computer) {
       } else {
         cellDiv.textContent = "X";
       }
-
       boardDiv2.appendChild(cellDiv);
     });
   });
-  // boardDiv2.addEventListener("click", clickHandlerBoard);
 }
 
 function clickHandlerBoard(event) {

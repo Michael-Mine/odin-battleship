@@ -35,6 +35,12 @@ export const gameController = (function () {
       players[1].receiveAttack(row, column, 0);
       displayBothBoards(players);
 
+      if (
+        infoDiv.textContent === "You Won! All Enemy's Battleships are sunk!"
+      ) {
+        return;
+      }
+
       setTimeout(() => {
         const [row2, column2] = getComputerAttack(players[0]);
         players[0].receiveAttack(row2, column2, 1);
@@ -75,5 +81,13 @@ export function missMessage(player) {
     infoDiv.textContent = "You missed! Enemy's turn...";
   } else {
     infoDiv.textContent = "The enemy missed! Your turn...";
+  }
+}
+
+export function winMessage(player) {
+  if (player === 0) {
+    infoDiv.textContent = "You Won! All Enemy's Battleships are sunk!";
+  } else {
+    infoDiv.textContent = "You Lost! All your Battleships are sunk!";
   }
 }
