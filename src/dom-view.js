@@ -1,4 +1,3 @@
-// only sends messages to controller
 import sailBoat from "./images/sail-boat.svg";
 import sailBoatSink from "./images/sail-boat-sink.svg";
 import { gameController } from "./game-controller";
@@ -9,8 +8,6 @@ const boardDiv2 = document.querySelector("#computer-board");
 export function displayBothBoards(players) {
   clearBoards();
   const [user, computer] = players;
-  // user.printBoard();
-  // computer.printBoard();
   displayBoardUser(user);
   displayBoardComputer(computer);
 }
@@ -84,6 +81,5 @@ function displayBoardComputer(computer) {
 function clickHandlerBoard(event) {
   const row = event.target.dataset.row;
   const column = event.target.dataset.column;
-  console.log(row, column);
   gameController.sendAttack(row, column);
 }

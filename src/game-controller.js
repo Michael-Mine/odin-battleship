@@ -27,7 +27,6 @@ export const gameController = (function () {
         let shipColumn = Number(element.charAt(2));
         computer.placeShip(shipRow, shipColumn);
       });
-      computer.printBoard();
 
       displayBothBoards(players);
     },
@@ -54,7 +53,6 @@ function getComputerAttack(computer) {
   const board = computer.getBoard();
 
   let adjacent = getAdjacentSlotsAfterHit(board);
-  console.log("adjacent = " + adjacent);
   if (adjacent) return adjacent;
 
   let row;
@@ -74,7 +72,6 @@ function getAdjacentSlotsAfterHit(board) {
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       if (board[i][j].getValue() === 2) {
-        console.log(board[i][j] + "= 2");
         if ([j + 1] >= 0 && [j + 1] < 10 && board[i][j + 1].getValue() < 2)
           return [i, j + 1];
         if ([j - 1] >= 0 && [j - 1] < 10 && board[i][j - 1].getValue() < 2)
