@@ -132,6 +132,10 @@ section {
   align-items: center;
 }
 
+.buttons-container, #info {
+  padding: 10px;
+}
+
 #random,
 #start-game,
 #new-game,
@@ -142,14 +146,13 @@ section {
 
 .board {
   display: grid;
-  height: 420px;
-  width: 420px;
+  height: 397px;
+  width: 397px;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   border: 1px solid black;
   gap: 2px;
   padding: 2px;
-  /* background-color: darkolivegreen; */
 }
 
 .cell {
@@ -158,15 +161,13 @@ section {
   align-items: center;
   text-align: center;
   font-size: 1rem;
-  color: darkolivegreen;
+  color: grey;
   border: 1px solid grey;
-  /* background: lightellow; */
 }
 
 .cell-button {
   height: 90%;
   width: 90%;
-  /* max-width: 100%; */
   cursor: pointer;
   background-color: var(--primary-colour-aside);
   border: none;

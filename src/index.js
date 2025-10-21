@@ -1,4 +1,5 @@
 import "./styles.css";
+import "./buttons.css";
 import { gameController } from "./game-controller.js";
 
 const playGameButton = document.querySelector("#play-game");

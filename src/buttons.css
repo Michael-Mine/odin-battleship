@@ -1,0 +1,13 @@
+/* From Uiverse.io by alexruix */
+.button--submit {
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #783192;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button--submit:hover {
+  background-color: #d9b5e6;
+}
