@@ -48,15 +48,19 @@ export const gameController = (function () {
       }, 1000);
     },
   };
-
-  // polish intelligence of computer by having it try adjacent slots after hit
 })();
 
 function getComputerAttack(computer) {
   const board = computer.getBoard();
+
+  let adjacent = getAdjacentSlotsAfterHit(board);
+  console.log("adjacent = " + adjacent);
+  if (adjacent) return adjacent;
+
   let row;
   let column;
   let boardValue;
+
   do {
     row = getRandomInt(10);
     column = getRandomInt(10);
@@ -64,6 +68,24 @@ function getComputerAttack(computer) {
   } while (boardValue > 1);
 
   return [row, column];
+}
+
+function getAdjacentSlotsAfterHit(board) {
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      if (board[i][j].getValue() === 2) {
+        console.log(board[i][j] + "= 2");
+        if ([j + 1] >= 0 && [j + 1] < 10 && board[i][j + 1].getValue() < 2)
+          return [i, j + 1];
+        if ([j - 1] >= 0 && [j - 1] < 10 && board[i][j - 1].getValue() < 2)
+          return [i, j - 1];
+        if ([i + 1] >= 0 && [i + 1] < 10 && board[i + 1][j].getValue() < 2)
+          return [i + 1, j];
+        if ([i - 1] >= 0 && [i - 1] < 10 && board[i - 1][j].getValue() < 2)
+          return [i - 1, j];
+      }
+    }
+  }
 }
 
 export function hitMessage(player) {
