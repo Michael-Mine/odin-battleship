@@ -132,7 +132,9 @@ section {
   align-items: center;
 }
 
-.buttons-container, #info {
+.buttons-container,
+#info,
+#user-score {
   padding: 10px;
 }
 
@@ -140,7 +142,9 @@ section {
 #start-game,
 #new-game,
 #user-board,
-#computer-board {
+#computer-board,
+#user-score,
+#computer-score {
   display: none;
 }
 
@@ -186,4 +190,8 @@ section {
 .ship-sink {
   filter: invert(25%) sepia(50%) saturate(1720%) hue-rotate(255deg)
     brightness(92%) contrast(97%);
+}
+
+.win-background {
+  background-color: var(--secondary-colour-header);
 }

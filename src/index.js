@@ -7,8 +7,11 @@ const randomButton = document.querySelector("#random");
 const startGameButton = document.querySelector("#start-game");
 const newGameButton = document.querySelector("#new-game");
 const userBoard = document.querySelector("#user-board");
-export const infoDiv = document.querySelector("#info");
 const computerBoard = document.querySelector("#computer-board");
+
+export const infoDiv = document.querySelector("#info");
+export const userScore = document.querySelector("#user-score");
+export const computerScore = document.querySelector("#computer-score");
 
 playGameButton.addEventListener("click", (event) => {
   event.preventDefault();
@@ -34,12 +37,20 @@ startGameButton.addEventListener("click", (event) => {
   newGameButton.style.display = "inline-block";
   infoDiv.textContent = "Click in grid below to attack!";
   computerBoard.style.display = "grid";
+  userScore.style.display = "block";
+  computerScore.style.display = "block";
 });
 
 newGameButton.addEventListener("click", (event) => {
   event.preventDefault();
   newGameButton.style.display = "none";
-  infoDiv.textContent = "";
   computerBoard.style.display = "none";
   randomButton.style.display = "inline-block";
+  userScore.style.display = "none";
+  computerScore.style.display = "none";
+  
+  infoDiv.textContent = "";
+  infoDiv.classList.remove("win-background");
+  userScore.textContent = "Your score is: 0";
+  computerScore.textContent = "Enemy score is: 0";
 });

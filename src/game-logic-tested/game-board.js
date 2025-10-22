@@ -1,5 +1,5 @@
 // jest parse error from below import
-import { hitMessage, missMessage, winMessage } from "../game-controller.js";
+import { hitCounterUpdate, hitMessage, missMessage, winMessage } from "../game-controller.js";
 
 export function gameBoard() {
   const board = createBoard();
@@ -22,7 +22,7 @@ export function gameBoard() {
       if (board[row][column].getValue() === 1) {
         board[row][column].hitShip();
         hitMessage(player);
-        checkAllShipsSunk(board, player);
+        getHitCounter(board, player);
       } else if (board[row][column].getValue() === 0) {
         board[row][column].missShip();
         missMessage(player);
@@ -74,7 +74,7 @@ function cell() {
   };
 }
 
-function checkAllShipsSunk(board, player) {
+function getHitCounter(board, player) {
   let hitCounter = 0;
 
   board.forEach((row) => {
@@ -84,6 +84,8 @@ function checkAllShipsSunk(board, player) {
       }
     });
   });
+  hitCounterUpdate(player, hitCounter.toString());
+
   if (hitCounter === 20) {
     winMessage(player);
   }

@@ -1,4 +1,4 @@
-import { infoDiv } from ".";
+import { computerScore, infoDiv, userScore } from ".";
 import { displayBothBoards } from "./dom-view";
 import { player } from "./game-logic-tested/player";
 import { getRandomInt, getRandomShips } from "./random-ships";
@@ -93,6 +93,14 @@ export function hitMessage(player) {
   }
 }
 
+export function hitCounterUpdate(player, score) {
+  if (player === 0) {
+    userScore.textContent = "Your score is: " + score;
+  } else {
+    computerScore.textContent = "Enemy score is: " + score;
+  }
+}
+
 export function missMessage(player) {
   if (player === 0) {
     infoDiv.textContent = "You missed! Enemy's turn...";
@@ -102,6 +110,7 @@ export function missMessage(player) {
 }
 
 export function winMessage(player) {
+  infoDiv.classList.add("win-background");
   if (player === 0) {
     infoDiv.textContent = "You Won! All Enemy's Battleships are sunk!";
   } else {
