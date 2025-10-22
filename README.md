@@ -11,3 +11,7 @@ The unit tests are only for JavaScript objects public interface. The private/int
 Her talk about this was at Rails Conf 2013 named 'The Magic Tricks of Testing' on YouTube and is also explained in her book 'Practical Object-Oriented Design in Ruby'.
 
 I also used pure functions for easier testing and loose coupled code which is taught in the Functional Programming paradigm.
+
+Live Link: https://michael-mine.github.io/odin-battleship
+
+![Screenshot Link](./src/images/battleship-screenshot.jpg)
