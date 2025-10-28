@@ -8,6 +8,7 @@ const startGameButton = document.querySelector("#start-game");
 const newGameButton = document.querySelector("#new-game");
 const userBoard = document.querySelector("#user-board");
 const computerBoard = document.querySelector("#computer-board");
+const coverPic = document.querySelector("#cover-pic");
 
 export const infoDiv = document.querySelector("#info");
 export const userScore = document.querySelector("#user-score");
@@ -20,6 +21,7 @@ playGameButton.addEventListener("click", (event) => {
 
 function gameSetup() {
   playGameButton.style.display = "none";
+  coverPic.style.display = "none";
   randomButton.style.display = "inline-block";
   userBoard.style.display = "grid";
 }
@@ -48,7 +50,7 @@ newGameButton.addEventListener("click", (event) => {
   randomButton.style.display = "inline-block";
   userScore.style.display = "none";
   computerScore.style.display = "none";
-  
+
   infoDiv.textContent = "";
   infoDiv.classList.remove("win-background");
   userScore.textContent = "Your score is: 0";
